@@ -2,11 +2,18 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
+const debug = require('debug')('mongo');
 
 const indexRouter = require('./routes/index');
 const questionRouter = require('./routes/question');
 
 const app = express();
+
+mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false', { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch((err) => {
+    debug(err);
+  });
 
 if (!process.env.TEST) {
   app.use(logger('dev'));

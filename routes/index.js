@@ -13,6 +13,6 @@ router.get('/', (req, res, next) => {
   should finish a game
 */
 router.delete('/', (req, res, next) => {
-  res.send('delete');
+  res.send('finish');
 });
 module.exports = router;

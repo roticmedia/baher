@@ -4,11 +4,12 @@ const dbConfig = require('../config/database');
 const sequelize = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  logging: false,
 });
 
-const db = Object.create(null);
+const sql = Object.create(null);
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+sql.sequelize = sequelize;
+sql.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = sql;
