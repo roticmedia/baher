@@ -2,9 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 
-/* GET home page. */
+/*
+  should start a game
+*/
 router.get('/', (req, res, next) => {
-  res.send('hello');
+  res.send('start');
 });
 
+/*
+  should finish a game
+*/
+router.delete('/', (req, res, next) => {
+  res.send('delete');
+});
 module.exports = router;
