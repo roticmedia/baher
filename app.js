@@ -7,6 +7,7 @@ const debug = require('debug')('mongo');
 
 const indexRouter = require('./routes/index');
 const questionRouter = require('./routes/question');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/question', questionRouter);
+app.use('/auth', authRouter);
 
 module.exports = app;

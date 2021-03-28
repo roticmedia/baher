@@ -11,6 +11,6 @@ const sql = Object.create(null);
 
 sql.sequelize = sequelize;
 sql.Sequelize = Sequelize;
-sql.dataType = DataTypes;
+sql.types = DataTypes;
 
 module.exports = sql;
