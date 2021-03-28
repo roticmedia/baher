@@ -15,9 +15,7 @@ mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=Mong
     debug(err);
   });
 
-if (!process.env.TEST) {
-  app.use(logger('dev'));
-}
+if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

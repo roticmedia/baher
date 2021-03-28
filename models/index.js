@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const dbConfig = require('../config/database');
 
 const sequelize = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWORD, {
@@ -11,5 +11,6 @@ const sql = Object.create(null);
 
 sql.sequelize = sequelize;
 sql.Sequelize = Sequelize;
+sql.dataType = DataTypes;
 
 module.exports = sql;
