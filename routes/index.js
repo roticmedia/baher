@@ -1,7 +1,6 @@
 const express = require('express');
 
 const router = express.Router();
-const auth = require('../middlewares/auth');
 
 /*
   should start a game

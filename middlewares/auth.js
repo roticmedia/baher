@@ -9,17 +9,17 @@ module.exports = (req, res, next) => {
 
     if (token) {
       jwt.verify(token, config.secret, {}, (err, decoded) => {
-        if (err) res.status(402).json({ error: 'auth error' });
+        if (err) res.status(401).json({ error: 'auth error' });
         else {
           req.data = decoded;
           next();
         }
       });
     } else {
-      res.status(402).json({ error: 'auth error' });
+      res.status(401).json({ error: 'auth error' });
     }
   } catch (err) {
     debug(err);
-    res.status(402).send('error');
+    res.status(401).send('error');
   }
 };
