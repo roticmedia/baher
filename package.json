@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "set debug=* && nodemon ./bin/www",
+    "develop": "pm2 start ./bin/www -i max",
     "test": "set TEST=true && mocha"
   },
   "dependencies": {

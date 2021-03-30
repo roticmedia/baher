@@ -9,12 +9,16 @@ const indexRouter = require('./routes/index');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
 
+const sql = require('./models');
+
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false', { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((err) => {
     debug(err);
   });
+
+sql.sequelize.sync({ });
 
 if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());

@@ -17,7 +17,7 @@ describe('SERVER', () => {
         done(err);
       });
     });
-    it.skip('should my sql connect correctly', (done) => {
+    it('should my sql connect correctly', (done) => {
       sql.sequelize.authenticate().then(() => {
         done();
       }).catch((err) => {

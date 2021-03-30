@@ -32,7 +32,7 @@ describe('auth', () => {
     });
   });
   it('should auth middleware prevent access to protected routes if token is not valid', (done) => {
-    request(app).get('/auth/test').set('token', 'wrong').end((err, res) => {
+    request(app).get('/auth/test').set('authorization', 'wrong dsfa').end((err, res) => {
       if (res.body.error === 'auth error') {
         done();
       } else {
@@ -41,7 +41,7 @@ describe('auth', () => {
     });
   });
   it('should auth middleware let access to protected routes with valid token', (done) => {
-    request(app).get('/auth/test').set('token', jwtConfig.authToken).end((err, res) => {
+    request(app).get('/auth/test').set('authorization', `bearer ${jwtConfig.authToken}`).end((err, res) => {
       if (res.body.error === 'auth error') {
         done('err');
       } else {

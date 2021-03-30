@@ -21,8 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/auth.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/auth.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/index.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/question.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +59,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -71,7 +77,11 @@
       <workItem from="1616911420402" duration="903000" />
       <workItem from="1616923678812" duration="155000" />
       <workItem from="1616925548656" duration="6507000" />
-      <workItem from="1616989426012" duration="1962000" />
+      <workItem from="1616989426012" duration="2594000" />
+      <workItem from="1617010207647" duration="5858000" />
+      <workItem from="1617093620755" duration="2303000" />
+      <workItem from="1617113719144" duration="591000" />
+      <workItem from="1617136673886" duration="4338000" />
     </task>
     <servers />
   </component>
@@ -103,13 +113,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616862662091" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1616773173738">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1617137517907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1616773173738" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1617137517907" />
     <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1616930260481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616930260481" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617013755583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1617013755583" />
   </component>
 </project>

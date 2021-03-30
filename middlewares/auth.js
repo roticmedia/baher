@@ -5,7 +5,8 @@ const config = require('../config/jsonWebToken');
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.header('token');
+    const header = req.header('authorization');
+    const token = header.split(' ')[1];
 
     if (token) {
       jwt.verify(token, config.secret, {}, (err, decoded) => {
@@ -20,6 +21,6 @@ module.exports = (req, res, next) => {
     }
   } catch (err) {
     debug(err);
-    res.status(401).send('error');
+    res.status(500).send({ error: 'auth error' });
   }
 };

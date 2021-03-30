@@ -13,4 +13,8 @@ sql.sequelize = sequelize;
 sql.Sequelize = Sequelize;
 sql.types = DataTypes;
 
+sql.question = require('./question')(sequelize, Sequelize, DataTypes);
+sql.game = require('./game')(sequelize, Sequelize, DataTypes);
+sql.q = require('./q')(sequelize, Sequelize, DataTypes);
+
 module.exports = sql;
