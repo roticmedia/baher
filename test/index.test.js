@@ -33,7 +33,7 @@ describe('route /', () => {
     it('should response with status 200', (done) => {
       request(app).post('/').set('authorization', `bearer ${jwtConfig.authToken}`).expect(200, done);
     });
-    it('should add game', (done) => {
+    it('should starts game', (done) => {
       request(app).post('/').set('authorization', `bearer ${jwtConfig.authToken}`)
         .end(((err, res) => {
           if (err) done(err);
@@ -49,7 +49,7 @@ describe('route /', () => {
     it('should response with status 200', (done) => {
       request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`).expect(200, done);
     });
-    it('should delete question', async () => {
+    it('should delete game', async () => {
       const game = await sql.game.create({});
       return new Promise((resolve, reject) => {
         request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`)
@@ -66,7 +66,7 @@ describe('route /', () => {
           }));
       });
     });
-    it('should not delete question for not found id', (done) => {
+    it('should not delete game for not found id', (done) => {
       request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`)
         .send({
           id: 5,
