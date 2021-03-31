@@ -5,7 +5,7 @@
   "scripts": {
     "start": "set debug=* && nodemon ./bin/www",
     "develop": "pm2 start ./bin/www -i max",
-    "test": "set TEST=true && mocha"
+    "test": "set TEST=true && mocha --timeout 100000"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

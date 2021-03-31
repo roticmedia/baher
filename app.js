@@ -18,6 +18,8 @@ mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=Mong
     debug(err);
   });
 
+// sql.sequelize.sync({ force: true });
+
 if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

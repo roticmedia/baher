@@ -20,14 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/q.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/q.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/question.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/index.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/question.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/question.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,9 @@
       <workItem from="1617093620755" duration="2303000" />
       <workItem from="1617113719144" duration="591000" />
       <workItem from="1617136673886" duration="4424000" />
-      <workItem from="1617164845219" duration="7568000" />
+      <workItem from="1617164845219" duration="7681000" />
+      <workItem from="1617184285801" duration="594000" />
+      <workItem from="1617203155551" duration="6555000" />
     </task>
     <servers />
   </component>
@@ -101,10 +102,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="828" y="412" width="596" height="525" key="#ESLint" timestamp="1616931954920">
+    <state x="828" y="412" width="596" height="525" key="#ESLint" timestamp="1617210464741">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="828" y="412" width="596" height="525" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1616931954920" />
+    <state x="828" y="412" width="596" height="525" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1617210464741" />
     <state x="738" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616818969655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

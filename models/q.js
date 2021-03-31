@@ -1,13 +1,20 @@
 module.exports = (sequelize, Sequelize, types) => sequelize.define('q', {
   gameId: {
-    type: Sequelize.UUID,
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
   questionId: {
     type: types.INTEGER,
     allowNull: false,
   },
-  status: types.TINYINT,
+  status: {
+    type: types.TINYINT,
+    defaultValue: 0,
+  },
+  user_answer: {
+    type: types.STRING,
+    defaultValue: '',
+  },
 }, {
   underscored: true,
 });
