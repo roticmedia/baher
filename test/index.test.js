@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const app = require('../app');
 
+const jwtConfig = require('../config/jsonWebToken');
 const sql = require('../models');
 
 describe('SERVER', () => {
@@ -35,7 +36,35 @@ describe('route /', () => {
   });
   describe('DELETE', () => {
     it('should response with status 200', (done) => {
-      request(app).delete('/').expect(200, done);
+      request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`).expect(200, done);
+    });
+    it('should delete question', (done) => {
+      request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`)
+        .send({
+          id: 1,
+        })
+        .end(((err, res) => {
+          if (err) done(err);
+          else if (res.body.status === true) {
+            done();
+          } else {
+            done('err');
+          }
+        }));
+    });
+    it('should not delete question for not found id', (done) => {
+      request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`)
+        .send({
+          id: 5,
+        })
+        .end(((err, res) => {
+          if (err) done(err);
+          else if (res.body.status === true) {
+            done();
+          } else {
+            done('err');
+          }
+        }));
     });
   });
 });

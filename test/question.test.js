@@ -5,10 +5,6 @@ const app = require('../app');
 const jwtConfig = require('../config/jsonWebToken');
 const sql = require('../models');
 
-before(async () => {
-  await sql.sequelize.sync({ force: true });
-});
-
 describe('route /question', () => {
   describe('POST', () => {
     it('should response with 200 status', (done) => {
@@ -30,10 +26,27 @@ describe('route /question', () => {
           text: 'سلام',
           difficulty: 1,
           type: 1,
+          answer: 'test',
         })
         .end(((err, res) => {
           if (err) done(err);
           else if (res.body.status === true) {
+            done();
+          } else {
+            done('err');
+          }
+        }));
+    });
+    it('should not add question', (done) => {
+      request(app).post('/question').set('authorization', `bearer ${jwtConfig.authToken}`)
+        .send({
+          text: 'سلام',
+          difficulty: 15,
+          type: 1,
+        })
+        .end(((err, res) => {
+          if (err) done(err);
+          else if (res.body.status === false) {
             done();
           } else {
             done('err');
@@ -58,8 +71,23 @@ describe('route /question', () => {
     it('should return error with not found id', (done) => {
       request(app).put('/question').set('authorization', `bearer ${jwtConfig.authToken}`)
         .send({
-          id: 2,
+          id: -1,
           text: 'salam',
+        })
+        .end(((err, res) => {
+          if (err) done(err);
+          else if (res.body.status === false) {
+            done();
+          } else {
+            done('err');
+          }
+        }));
+    });
+    it('should not update question with not valid values', (done) => {
+      request(app).put('/question').set('authorization', `bearer ${jwtConfig.authToken}`)
+        .send({
+          id: 1,
+          difficulty: 15,
         })
         .end(((err, res) => {
           if (err) done(err);
