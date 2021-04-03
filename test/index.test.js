@@ -33,7 +33,7 @@ describe('route /', () => {
         it('should response with status 200', (done) => {
             request(app).post('/').set('authorization', `bearer ${jwtConfig.authToken}`).expect(200, done);
         });
-        it('should starts a match', (done) => {
+        it('should start a match', (done) => {
             request(app).post('/').set('authorization', `bearer ${jwtConfig.authToken}`)
                 .send({
                     competitors: 10,
@@ -54,7 +54,7 @@ describe('route /', () => {
         it('should response with status 200', (done) => {
             request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`).expect(200, done);
         });
-        it('should delete game', async () => {
+        it('should finish match', async () => {
             const game = await sql.match.create({
                 competitors: 10,
                 coin_questions: 30,
@@ -75,7 +75,7 @@ describe('route /', () => {
                     }));
             });
         });
-        it('should not delete game for not found id', (done) => {
+        it('should not delete match for not found id', (done) => {
             request(app).delete('/').set('authorization', `bearer ${jwtConfig.authToken}`)
                 .send({
                     id: 5,

@@ -12,10 +12,10 @@ const router = express.Router();
 */
 router.post('/', auth, async (req, res, next) => {
     try {
-        const questions = [];
         const {
             competitors, monasabat, coin_questions, foop_questions, award_title,
         } = req.body;
+
         const match = await sql.match.create({
             competitors: parseInt(competitors, 10) || 15,
             monasabat: monasabat || null,
@@ -24,6 +24,7 @@ router.post('/', auth, async (req, res, next) => {
             award_title: award_title || '',
         });
 
+        const questions = _.fill(Array(match.get('competitors')), []);
         const foop_count = match.get('foop_questions') / match.get('competitors');
         const coin_count = match.get('coin_questions') / match.get('competitors');
 
@@ -51,24 +52,22 @@ router.post('/', auth, async (req, res, next) => {
             let rnd;
             for (let j = foop_count; j > 0; j--) {
                 rnd = Math.floor(Math.random() * foops.length);
-                questions[i] = [];
                 questions[i].push(foops[rnd].toJSON());
                 await foops[rnd].update({
                     last_used: new Date(),
                     match_id: match.get('id'),
+                    used_times: sql.Sequelize.literal('used_times + 1'),
                 });
-                await foops[rnd].increment('used_times', { by: 1 });
                 foops.splice(rnd, 1);
             }
             for (let k = coin_count; k > 0; k--) {
                 rnd = Math.floor(Math.random() * coins.length);
-                questions[i] = [];
                 questions[i].push(coins[rnd].toJSON());
                 await coins[rnd].update({
                     last_used: new Date().toString(),
                     match_id: match.get('id'),
+                    used_times: sql.Sequelize.literal('used_times + 1'),
                 });
-                await coins[rnd].increment('used_times', { by: 1 });
                 coins.splice(rnd, 1);
             }
         }
@@ -79,7 +78,6 @@ router.post('/', auth, async (req, res, next) => {
         });
     } catch (err) {
         debug(err);
-        console.log(err);
 
         return res.json({
             msg: 'مشکلی در اضافه کردن مسابقه بوجود آمده است',
@@ -89,7 +87,7 @@ router.post('/', auth, async (req, res, next) => {
 });
 
 /*
-  should finish a game
+  should finish a match
 */
 router.delete('/', auth, async (req, res, next) => {
     try {
