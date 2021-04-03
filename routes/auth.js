@@ -5,6 +5,10 @@ const router = express.Router();
 const jwtConfig = require('../config/jsonWebToken');
 const auth = require('../middlewares/auth');
 
+/**
+ * @api {get} /auth
+ * @apiName Authentication
+ */
 router.get('/', (req, res) => {
   try {
     jwt.sign({}, jwtConfig.secret, {}, (err, token) => {

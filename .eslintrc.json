@@ -11,8 +11,12 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "indent": ["error", 4],
         "no-unused-vars": "off",
         "no-undef": "off",
-        "no-await-in-loop": "off"
+        "no-await-in-loop": "off",
+        "no-restricted-syntax": "off",
+        "no-plusplus": "off",
+        "camelcase": "off"
     }
 }

@@ -2,9 +2,17 @@ const { Sequelize, DataTypes } = require('sequelize');
 const dbConfig = require('../config/database');
 
 const sequelize = new Sequelize(dbConfig.DATABASE, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
-  logging: false,
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    logging: false,
+    dialectOptions: { connectTimeout: 15000 },
+    pool: {
+        max: 10,
+        min: 0,
+        acquire: 120000,
+        idle: 120000,
+        evict: 120000,
+    },
 });
 
 const sql = Object.create(null);
@@ -14,7 +22,7 @@ sql.Sequelize = Sequelize;
 sql.types = DataTypes;
 
 sql.question = require('./question')(sequelize, Sequelize, DataTypes);
-sql.game = require('./game')(sequelize, Sequelize, DataTypes);
-sql.q = require('./q')(sequelize, Sequelize, DataTypes);
+sql.match = require('./match')(sequelize, Sequelize, DataTypes);
+sql.player = require('./player')(sequelize, Sequelize, DataTypes);
 
 module.exports = sql;

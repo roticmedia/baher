@@ -1,0 +1,132 @@
+{
+  level: 'warn',
+  message: 'Run "npm install apidoc -g" and then run "apidoc -e node_modules/" at your terminal',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\doc\api_data.json'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\doc\\api_data.json'
+  },
+  timestamp: '2021-04-02T05:40:03.909Z'
+}
+{
+  level: 'warn',
+  message: 'Run "npm install apidoc -g" and then run "apidoc -e node_modules/" at your terminal',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\doc\api_data.json'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\doc\\api_data.json'
+  },
+  timestamp: '2021-04-02T05:41:27.955Z'
+}
+{
+  level: 'warn',
+  message: 'Run "npm install apidoc -g" and then run "apidoc -e node_modules/" at your terminal',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\doc\api_data.json'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\doc\\api_data.json'
+  },
+  timestamp: '2021-04-02T05:45:07.324Z'
+}
+{
+  level: 'warn',
+  message: 'Run "npm install apidoc -g" and then run "apidoc -e node_modules/" at your terminal',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\doc\api_data.json'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\doc\\api_data.json'
+  },
+  timestamp: '2021-04-02T05:45:07.577Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:49:23.410Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:49:26.273Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:49:29.147Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:50:05.775Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:50:08.519Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:50:10.987Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:50:17.643Z'
+}
+{
+  level: 'error',
+  message: 'File "document.html" is missing at "./node_modules/node-api-doc-generator/api_doc" dir',
+  log: [Error: ENOENT: no such file or directory, access 'E:\projects\quiz\node_modules\node-api-doc-generator\api_doc\document.html'] {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'access',
+    path: 'E:\\projects\\quiz\\node_modules\\node-api-doc-generator\\api_doc\\document.html'
+  },
+  timestamp: '2021-04-02T05:50:20.343Z'
+}
