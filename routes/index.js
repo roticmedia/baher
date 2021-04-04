@@ -13,15 +13,15 @@ const router = express.Router();
 router.post('/', auth, async (req, res, next) => {
     try {
         const {
-            competitors, monasabat, coin_questions, foop_questions, award_title,
+            competitors = 15, monasabat = null, coin_questions = 30, foop_questions = 45, award_title = '',
         } = req.body;
 
         const match = await sql.match.create({
-            competitors: parseInt(competitors, 10) || 15,
-            monasabat: monasabat || null,
-            coin_questions: typeof coin_questions === 'number' ? parseInt(coin_questions, 10) : 30,
-            foop_questions: typeof foop_questions === 'number' ? parseInt(foop_questions, 10) : 45,
-            award_title: award_title || '',
+            competitors,
+            monasabat,
+            coin_questions,
+            foop_questions,
+            award_title,
         });
 
         const questions = _.fill(Array(match.get('competitors')), []);
