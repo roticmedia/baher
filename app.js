@@ -30,4 +30,18 @@ app.use('/', indexRouter);
 app.use('/question', questionRouter);
 app.use('/auth', authRouter);
 
+app.use((req, res, next) => {
+    res.status(404);
+
+    if (req.accepts('json')) {
+        res.json({
+            msg: 'not found',
+            status: false,
+        });
+        return;
+    }
+
+    res.type('txt').send('Not found');
+});
+
 module.exports = app;
