@@ -32,5 +32,5 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('player', {
         type: types.STRING,
     },
 }, {
-    underscored: true,
+    timestamps: false,
 });

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "develop": "pm2 start ./bin/www -i max",
-    "test": "set TEST=true && mocha --timeout 100000"
+    "test": "set TEST=true && mocha --timeout 5000"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

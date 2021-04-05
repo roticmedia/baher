@@ -2,10 +2,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose');
-const debug = require('debug')('mongo');
 
-const indexRouter = require('./routes/index');
+const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
 
@@ -26,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/match', matchRouter);
 app.use('/question', questionRouter);
 app.use('/auth', authRouter);
 
