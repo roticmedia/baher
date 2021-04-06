@@ -19,8 +19,15 @@ router.get('/', auth, async (req, res) => {
                 status: 2,
             },
         });
+        const questions = await sql.question.findAll({
+            where: {
+                match_id: {
+                    [Op.not]: null,
+                },
+            },
+            raw: true,
+        });
         for (const match of matches) {
-            console.log(match);
             competitors.push(await sql.player.findOne({
                 where: {
                     id: match.get('player_id'),
@@ -30,17 +37,24 @@ router.get('/', auth, async (req, res) => {
         }
         if (competitors.length === 0) {
             return res.json({
+                data: {},
                 msg: 'مسابقه ای در حاضر موجود نیست',
                 status: false,
             });
         }
         return res.json({
-            competitors,
+            msg: 'پیدا شد',
+            data: {
+                competitors,
+                matches: matches.map((match) => match.toJSON()),
+                questions,
+            },
             status: true,
         });
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });
@@ -64,6 +78,7 @@ router.post('/', auth, async (req, res) => {
 
         if (game) {
             return res.json({
+                data: {},
                 msg: 'مسابقه قبلا شروع شده است',
                 status: true,
             });
@@ -77,8 +92,10 @@ router.post('/', auth, async (req, res) => {
                 match_id: null,
             },
             order: sql.sequelize.random(),
-            limit: competitors,
+            limit: parseInt(competitors, 10),
         });
+        let questions = [];
+        const matches = [];
 
         const foops = await sql.question.findAll({
             where: {
@@ -87,7 +104,7 @@ router.post('/', auth, async (req, res) => {
             order: [
                 ['used_times', 'ASC'],
             ],
-            limit: foop_questions,
+            limit: parseInt(foop_questions, 10),
         });
         const coins = await sql.question.findAll({
             where: {
@@ -96,11 +113,15 @@ router.post('/', auth, async (req, res) => {
             order: [
                 ['used_times', 'ASC'],
             ],
-            limit: coin_questions,
+            limit: parseInt(coin_questions, 10),
         });
+
+        questions = questions.concat(foops.map((foop) => foop.toJSON()));
+        questions = questions.concat(coins.map((coin) => coin.toJSON()));
 
         if (coins.length < coin_questions || foops.length < foop_questions) {
             return res.json({
+                data: {},
                 msg: 'سوال به تعداد کافی موجود نیست',
                 status: false,
             });
@@ -111,14 +132,16 @@ router.post('/', auth, async (req, res) => {
             let rnd;
 
             const match = await sql.match.create({
-                competitors,
+                competitors: parseInt(competitors, 10),
                 monasabat,
-                coin_questions,
-                foop_questions,
+                coin_questions: parseInt(coin_questions, 10),
+                foop_questions: parseInt(foop_questions, 10),
                 award_title,
                 game_token,
                 player_id: player ? player.get('id') : null,
             });
+
+            matches.push(match.toJSON());
 
             if (player) {
                 player_id = player.get('id');
@@ -150,12 +173,17 @@ router.post('/', auth, async (req, res) => {
         }
         return res.json({
             msg: 'بازی با موفقیت اضافه شد',
-            competitors: players.map((player) => player.toJSON()),
+            data: {
+                competitors: players.map((player) => player.toJSON()),
+                matches,
+                questions,
+            },
             status: true,
         });
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });
@@ -183,13 +211,24 @@ router.delete('/', auth, async (req, res) => {
                 },
             },
         });
+        await sql.question.update({
+            match_id: null,
+        }, {
+            where: {
+                match_id: {
+                    [Op.not]: null,
+                },
+            },
+        });
         return res.json({
+            data: {},
             msg: 'مسابقه پایان یافت',
             status: true,
         });
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });
@@ -203,6 +242,7 @@ router.post('/addPlayer', auth, async (req, res) => {
     try {
         if (!req.body.id) {
             return res.json({
+                data: {},
                 msg: 'اطلاعات ورودی ناقص است',
                 status: false,
             });
@@ -216,6 +256,7 @@ router.post('/addPlayer', auth, async (req, res) => {
 
         if (!player) {
             return res.json({
+                data: {},
                 msg: 'بازیکن پیدا نشد',
                 status: false,
             });
@@ -229,6 +270,7 @@ router.post('/addPlayer', auth, async (req, res) => {
 
         if (match && match.get('status') !== 3) {
             return res.json({
+                data: {},
                 msg: 'بازیکن در مسابقه حضور دارد',
                 status: false,
             });
@@ -245,18 +287,21 @@ router.post('/addPlayer', auth, async (req, res) => {
                 player_id: req.body.id,
             });
             return res.json({
+                data: {},
                 msg: 'با موفقیت اضافه شد',
                 status: true,
             });
         }
 
         return res.json({
+            data: {},
             msg: 'مسابقه پر است',
             status: false,
         });
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });

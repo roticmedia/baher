@@ -17,21 +17,27 @@ router.get('/:id', auth, async (req, res) => {
             });
             if (question) {
                 return res.json({
-                    question: question.toJSON(),
+                    msg: '',
+                    data: {
+                        question: question.toJSON(),
+                    },
                     status: true,
                 });
             }
             return res.json({
+                data: {},
                 msg: 'سوال پیدا نشد',
                 status: false,
             });
         }
         return res.json({
+            data: {},
             msg: 'اطلاعات ناقص است',
             status: false,
         });
     } catch (err) {
         return res.json({
+            data: {},
             msg: 'مشکلی در پیدا کردن سوال بوجود آمده است',
             status: false,
         });
@@ -48,6 +54,7 @@ router.post('/', auth, (async (req, res) => {
         } = req.body;
         if (!title || typeof hardness === 'undefined' || typeof question_answer === 'undefined' || typeof is_true === 'undefined') {
             return res.json({
+                data: {},
                 msg: 'اطلاعات ناقص است',
                 status: false,
             });
@@ -56,6 +63,7 @@ router.post('/', auth, (async (req, res) => {
             // eslint-disable-next-line max-len
             if (req.body.option_1 == null && req.body.option_2 == null && req.body.option_3 == null && req.body.option_4 == null) {
                 return res.json({
+                    data: {},
                     msg: 'اطلاعات ناقص است',
                     status: false,
                 });
@@ -74,6 +82,7 @@ router.post('/', auth, (async (req, res) => {
         });
 
         return res.json({
+            data: {},
             msg: 'سوال اضافه شد',
             status: true,
         });
@@ -81,11 +90,13 @@ router.post('/', auth, (async (req, res) => {
         if (err instanceof ValidationError) {
             return res.json({
                 msg: err.errors.map((error) => error.message),
+                data: {},
                 status: false,
             });
         }
 
         return res.json({
+            data: {},
             msg: 'مشکلی در اضافه کردن سوال بوچود آمده است',
             status: false,
         });
@@ -99,6 +110,7 @@ router.put('/', auth, (async (req, res) => {
     try {
         if (!req.body.id) {
             return res.json({
+                data: {},
                 msg: 'اطلاعات ناقص است',
                 status: false,
             });
@@ -124,22 +136,26 @@ router.put('/', auth, (async (req, res) => {
             await question.save();
 
             return res.json({
+                data: {},
                 msg: 'سوال بروزرسانی شد',
                 status: true,
             });
         }
         return res.json({
+            data: {},
             msg: 'سوال پیدا نشد',
             status: false,
         });
     } catch (err) {
         if (err instanceof ValidationError) {
             return res.json({
+                data: {},
                 msg: err.errors,
                 status: false,
             });
         }
         return res.json({
+            data: {},
             msg: 'مشکلی در بروزرسانی سوال بوجود آمده است',
             status: false,
         });
@@ -157,21 +173,25 @@ router.delete('/', auth, async (req, res) => {
             if (question) {
                 await question.destroy();
                 return res.json({
+                    data: {},
                     msg: 'سوال با موفقیت حذف شد',
                     status: true,
                 });
             }
             return res.json({
+                data: {},
                 msg: 'سوال پیدا نشد',
                 status: true,
             });
         }
         return res.json({
+            data: {},
             msg: 'سوال پیدا نشد',
             status: false,
         });
     } catch (err) {
         return res.json({
+            data: {},
             msg: 'مشکلی در حذف سوال بوجود آمده است',
             status: false,
         });
