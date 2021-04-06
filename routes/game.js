@@ -28,6 +28,12 @@ router.get('/', auth, async (req, res) => {
                 raw: true,
             }));
         }
+        if (competitors.length === 0) {
+            return res.json({
+                msg: 'مسابقه ای در حاضر موجود نیست',
+                status: false,
+            });
+        }
         return res.json({
             competitors,
             status: true,
@@ -63,7 +69,6 @@ router.post('/', auth, async (req, res) => {
             });
         }
 
-        const comps = [];
         const game_token = v4();
         const foop_count = foop_questions / competitors;
         const coin_count = coin_questions / competitors;
@@ -222,12 +227,33 @@ router.post('/addPlayer', auth, async (req, res) => {
             },
         });
 
-        if (match.get('status') !== 3) {
+        if (match && match.get('status') !== 3) {
             return res.json({
                 msg: 'بازیکن در مسابقه حضور دارد',
                 status: false,
             });
         }
+
+        const empty_match = await sql.match.findOne({
+            where: {
+                status: 2,
+                player_id: null,
+            },
+        });
+        if (empty_match) {
+            await empty_match.update({
+                player_id: req.body.id,
+            });
+            return res.json({
+                msg: 'با موفقیت اضافه شد',
+                status: true,
+            });
+        }
+
+        return res.json({
+            msg: 'مسابقه پر است',
+            status: false,
+        });
     } catch (err) {
         console.log(err);
         return res.json({

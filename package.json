@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "develop": "pm2 start ./bin/www -i max",
+    "develop": "set NODE_ENV=production && pm2 start ./bin/www -i max",
     "test": "set TEST=true && mocha --timeout 5000"
   },
   "dependencies": {
