@@ -5,7 +5,10 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('match', {
     },
     status: {
         type: types.TINYINT,
-        defaultValue: 0,
+        defaultValue: 2,
+    },
+    player_id: {
+        type: types.INTEGER,
     },
     monasabat: {
         type: types.STRING,
@@ -28,6 +31,10 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('match', {
     game_token: {
         type: types.UUID,
         defaultValue: types.UUIDV4,
+    },
+    created_at: {
+        type: types.DATE,
+        defaultValue: Sequelize.now,
     },
 }, {
     underscored: true,

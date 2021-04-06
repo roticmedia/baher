@@ -6,6 +6,7 @@ const logger = require('morgan');
 const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
+const gameRouter = require('./routes/game');
 
 const sql = require('./models');
 
@@ -16,7 +17,7 @@ const app = express();
 //         debug(err);
 //     });
 //
-// sql.sequelize.sync();
+// sql.sequelize.sync({ force: true });
 
 if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/match', matchRouter);
 app.use('/question', questionRouter);
 app.use('/auth', authRouter);
+app.use('/game', gameRouter);
 
 app.use((req, res, next) => {
     res.status(404);

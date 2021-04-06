@@ -17,6 +17,7 @@
         "no-await-in-loop": "off",
         "no-restricted-syntax": "off",
         "no-plusplus": "off",
-        "camelcase": "off"
+        "camelcase": "off",
+        "no-console": "off"
     }
 }

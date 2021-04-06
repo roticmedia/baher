@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/game.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jsonWebToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/jsonWebToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/match.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/match.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/match.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/match.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +103,8 @@
       <workItem from="1617594556167" duration="2198000" />
       <workItem from="1617614452270" duration="2110000" />
       <workItem from="1617631290987" duration="266000" />
-      <workItem from="1617631583349" duration="5110000" />
+      <workItem from="1617631583349" duration="5650000" />
+      <workItem from="1617685302174" duration="8422000" />
     </task>
     <servers />
   </component>
