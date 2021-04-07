@@ -47,7 +47,7 @@ router.post('/', auth, (req, res) => {
                 phone,
                 country,
                 password,
-                picture: req.file.path,
+                picture: path.join('uploads', req.file.path),
             });
             return res.json({
                 data: {},
