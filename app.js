@@ -7,6 +7,7 @@ const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
 const gameRouter = require('./routes/game');
+const playerRouter = require('./routes/player');
 
 const sql = require('./models');
 
@@ -21,7 +22,7 @@ const app = express();
 
 if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -29,6 +30,7 @@ app.use('/match', matchRouter);
 app.use('/question', questionRouter);
 app.use('/auth', authRouter);
 app.use('/game', gameRouter);
+app.use('/player', playerRouter);
 
 app.use((req, res, next) => {
     res.status(404);
