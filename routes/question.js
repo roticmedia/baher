@@ -121,30 +121,32 @@ router.put('/', auth, (async (req, res) => {
             },
         });
 
-        if (question) {
-            if (req.body.title) question.title = req.body.title;
-            if (req.body.hardness) question.hardness = req.body.hardness;
-            if (req.body.is_true) question.is_true = req.body.is_true;
-            if (req.body.question_answer) question.question_answer = req.body.question_answer;
-            if (req.body.score) question.score = req.body.score;
-
-            if (req.body.option_1) question.option_1 = req.body.option_1;
-            if (req.body.option_2) question.option_2 = req.body.option_2;
-            if (req.body.option_3) question.option_3 = req.body.option_3;
-            if (req.body.option_4) question.option_4 = req.body.option_4;
-
-            await question.save();
-
+        if (!question) {
             return res.json({
                 data: {},
-                msg: 'سوال بروزرسانی شد',
-                status: true,
+                msg: 'سوال پیدا نشد',
+                status: false,
             });
         }
+
+        if (req.body.title) question.title = req.body.title;
+        if (req.body.hardness) question.hardness = req.body.hardness;
+        if (req.body.is_true) question.is_true = req.body.is_true;
+        if (req.body.user_answer) question.user_answer = req.body.user_answer;
+        if (req.body.question_answer) question.question_answer = req.body.question_answer;
+        if (req.body.score) question.score = req.body.score;
+
+        if (req.body.option_1) question.option_1 = req.body.option_1;
+        if (req.body.option_2) question.option_2 = req.body.option_2;
+        if (req.body.option_3) question.option_3 = req.body.option_3;
+        if (req.body.option_4) question.option_4 = req.body.option_4;
+
+        await question.save();
+
         return res.json({
             data: {},
-            msg: 'سوال پیدا نشد',
-            status: false,
+            msg: 'سوال بروزرسانی شد',
+            status: true,
         });
     } catch (err) {
         if (err instanceof ValidationError) {
@@ -164,30 +166,32 @@ router.put('/', auth, (async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
     try {
-        if (req.body.id) {
-            const question = await sql.question.findOne({
-                where: {
-                    id: req.body.id,
-                },
+        if (!req.body.id) {
+            return res.json({
+                data: {},
+                msg: 'اطلاعات ناقص است',
+                status: false,
             });
-            if (question) {
-                await question.destroy();
-                return res.json({
-                    data: {},
-                    msg: 'سوال با موفقیت حذف شد',
-                    status: true,
-                });
-            }
+        }
+        const question = await sql.question.findOne({
+            where: {
+                id: req.body.id,
+            },
+        });
+        if (!question) {
             return res.json({
                 data: {},
                 msg: 'سوال پیدا نشد',
                 status: true,
             });
         }
+
+        await question.destroy();
+
         return res.json({
             data: {},
-            msg: 'سوال پیدا نشد',
-            status: false,
+            msg: 'سوال با موفقیت حذف شد',
+            status: true,
         });
     } catch (err) {
         return res.json({
