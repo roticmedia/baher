@@ -4,6 +4,17 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const multer = require('multer');
 
+const storage = multer.diskStorage({
+    destination: './public/uploads/',
+    filename(req, file, cb) {
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    },
+});
+
+const upload = multer({
+    storage,
+}).single('picture');
+
 const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
@@ -24,6 +35,7 @@ const app = express();
 if (!process.env.TEST) app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(upload);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 
