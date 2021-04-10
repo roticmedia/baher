@@ -22,11 +22,6 @@
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/NaN.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/picture-1617824042236.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/picture-1617824200367.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/profile.jpg1617822568527.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/profile.jpg1617822623854.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +61,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\projects\quiz\utils" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -115,7 +115,9 @@
       <workItem from="1617861576454" duration="5168000" />
       <workItem from="1617880982041" duration="72000" />
       <workItem from="1617892882530" duration="1438000" />
-      <workItem from="1617973269613" duration="1411000" />
+      <workItem from="1617973269613" duration="2171000" />
+      <workItem from="1617986074533" duration="3217000" />
+      <workItem from="1618038220225" duration="1414000" />
     </task>
     <servers />
   </component>
@@ -143,10 +145,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="738" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1616818969655" />
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617423967268">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618039176361">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1617423967268" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618039176361" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1617385313206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

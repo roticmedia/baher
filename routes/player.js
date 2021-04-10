@@ -5,10 +5,11 @@ const sql = require('../models');
 
 const auth = require('../middlewares/auth');
 
+const validate = require('../utils/validate');
+
 const router = express.Router();
 
 router.post('/', auth, async (req, res) => {
-    console.log(req.body);
     try {
         const {
             name, username, email, phone, country, password,
@@ -21,6 +22,15 @@ router.post('/', auth, async (req, res) => {
                 status: false,
             });
         }
+
+        if (!validate.validateFileType(req.file)) {
+            return res.json({
+                data: {},
+                msg: 'فایل باید تصویر باشد',
+                status: false,
+            });
+        }
+
         await sql.player.create({
             name,
             username,
@@ -62,6 +72,14 @@ router.put('/', auth, async (req, res) => {
             return res.json({
                 data: {},
                 msg: 'اطلاعات ناقص است',
+                status: false,
+            });
+        }
+
+        if (req.file && !validate.validateFileType(req.file)) {
+            return res.json({
+                data: {},
+                msg: 'فایل باید تصویر باشد',
                 status: false,
             });
         }
