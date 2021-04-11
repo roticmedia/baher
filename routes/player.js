@@ -6,6 +6,7 @@ const sql = require('../models');
 const auth = require('../middlewares/auth');
 
 const validate = require('../utils/validate');
+const validatePlayer = require('../validate/Player');
 
 const router = express.Router();
 

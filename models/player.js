@@ -11,6 +11,11 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('player', {
     },
     email: {
         type: types.STRING,
+        validate: {
+            isEmail: {
+                msg: 'ایمیل معتبر نیست',
+            },
+        },
     },
     phone: {
         type: types.STRING,
