@@ -195,6 +195,40 @@ router.post('/', auth, async (req, res) => {
  */
 router.delete('/', auth, async (req, res) => {
     try {
+        const matches = await sql.match.findAll({
+            where: {
+                status: 2,
+            },
+        });
+        if (!matches) {
+            return res.json({
+                data: {},
+                msg: 'مسابقه ای وجود ندارد',
+                status: false,
+            });
+        }
+        const winners = JSON.parse(matches[0].get('winners')) || [];
+
+        for (const match of matches.toJSON()) {
+            const questions = await sql.findAll({
+                where: {
+                    match_id: match.get('id'),
+                },
+            });
+
+            if (questions.every((question) => question.get('user_answer') === question.get('question_answer'))) {
+                const player = await sql.player.findOne({
+                    where: {
+                        match_id: match.get('id'),
+                    },
+                });
+                winners.push(player.toJSON());
+                await match.update({
+                    winners: JSON.stringify(winners),
+                });
+            }
+        }
+
         await sql.match.update({
             status: 3,
         }, {
