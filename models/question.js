@@ -66,6 +66,7 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('question', {
     },
     user_answer: {
         type: types.TINYINT,
+        defaultValue: -1,
     },
 }, {
     timestamps: false,

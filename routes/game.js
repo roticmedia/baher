@@ -207,10 +207,9 @@ router.delete('/', auth, async (req, res) => {
                 status: false,
             });
         }
-        const winners = JSON.parse(matches[0].get('winners')) || [];
-
-        for (const match of matches.toJSON()) {
-            const questions = await sql.findAll({
+        let winners = parseInt(matches[0].get('winners'), 10) || 0;
+        for (const match of matches) {
+            const questions = await sql.question.findAll({
                 where: {
                     match_id: match.get('id'),
                 },
@@ -222,15 +221,13 @@ router.delete('/', auth, async (req, res) => {
                         match_id: match.get('id'),
                     },
                 });
-                winners.push(player.toJSON());
-                await match.update({
-                    winners: JSON.stringify(winners),
-                });
+                winners++;
             }
         }
 
         await sql.match.update({
             status: 3,
+            winners,
         }, {
             where: {
                 status: 2,
