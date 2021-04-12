@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 
 const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
@@ -14,11 +15,16 @@ const multer = require('./config/multer');
 
 const app = express();
 
-// mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false', { useNewUrlParser: true, useUnifiedTopology: true })
-//     .catch((err) => {
-//         debug(err);
-//     });
-//
+mongoose.connect('mongodb://localhost:27017/baher', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+})
+    .catch((err) => {
+        console.log(err);
+    });
+
 // sql.sequelize.sync({ force: true });
 
 if (!process.env.TEST) app.use(logger('dev'));

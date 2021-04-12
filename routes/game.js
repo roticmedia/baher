@@ -216,7 +216,10 @@ router.delete('/', auth, async (req, res) => {
             });
 
             if (questions.every((question) => question.get('user_answer') === question.get('question_answer'))) {
-                await sql.player.findOne({
+                await sql.player.update({
+                    matches_win: sql.Sequelize.literal('matches_win + 1'),
+                },
+                {
                     where: {
                         match_id: match.get('id'),
                     },
