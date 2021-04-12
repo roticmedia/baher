@@ -200,7 +200,7 @@ router.delete('/', auth, async (req, res) => {
                 status: 2,
             },
         });
-        if (!matches) {
+        if (matches.length === 0) {
             return res.json({
                 data: {},
                 msg: 'مسابقه ای وجود ندارد',
@@ -216,7 +216,7 @@ router.delete('/', auth, async (req, res) => {
             });
 
             if (questions.every((question) => question.get('user_answer') === question.get('question_answer'))) {
-                const player = await sql.player.findOne({
+                await sql.player.findOne({
                     where: {
                         match_id: match.get('id'),
                     },
@@ -244,6 +244,7 @@ router.delete('/', auth, async (req, res) => {
         });
         await sql.question.update({
             match_id: null,
+            player_id: null,
         }, {
             where: {
                 match_id: {
