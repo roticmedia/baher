@@ -1,5 +1,6 @@
 const express = require('express');
 const { ValidationError } = require('sequelize');
+const { Op } = require('sequelize');
 
 const sql = require('../models');
 
@@ -9,6 +10,32 @@ const validate = require('../utils/validate');
 const validatePlayer = require('../validate/Player');
 
 const router = express.Router();
+
+router.get('/available', auth, async (req, res) => {
+    try {
+        const availablePlayer = await sql.player.findAll({
+            where: {
+                match_id: null,
+            },
+            raw: true,
+        });
+
+        return res.json({
+            data: {
+                available_players: availablePlayer,
+            },
+            msg: '',
+            status: true,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
+            msg: 'مشکلی بوجود آمده است',
+            status: false,
+        });
+    }
+});
 
 router.post('/', auth, async (req, res) => {
     try {

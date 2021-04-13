@@ -248,6 +248,7 @@ router.delete('/', auth, async (req, res) => {
         await sql.question.update({
             match_id: null,
             player_id: null,
+            status: 3,
         }, {
             where: {
                 match_id: {

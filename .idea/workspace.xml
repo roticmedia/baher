@@ -22,8 +22,9 @@
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,11 @@
       <workItem from="1618139376929" duration="99000" />
       <workItem from="1618163398609" duration="3073000" />
       <workItem from="1618171303398" duration="111000" />
-      <workItem from="1618217946683" duration="4789000" />
+      <workItem from="1618217946683" duration="5170000" />
+      <workItem from="1618236556379" duration="73000" />
+      <workItem from="1618242766318" duration="1095000" />
+      <workItem from="1618290288360" duration="6642000" />
+      <workItem from="1618297963693" duration="918000" />
     </task>
     <servers />
   </component>

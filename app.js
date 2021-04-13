@@ -15,15 +15,15 @@ const multer = require('./config/multer');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/baher', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-})
-    .catch((err) => {
-        console.log(err);
-    });
+// mongoose.connect('mongodb://localhost:27017/baher', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+// })
+//     .catch((err) => {
+//         console.log(err);
+//     });
 
 // sql.sequelize.sync({ force: true });
 
