@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const matchRouter = require('./routes/match');
 const questionRouter = require('./routes/question');
 const authRouter = require('./routes/auth');
-const gameRouter = require('./routes/game');
 const playerRouter = require('./routes/player');
 
 const sql = require('./models');
@@ -37,7 +36,6 @@ app.use(express.static(path.join(__dirname)));
 app.use('/match', matchRouter);
 app.use('/question', questionRouter);
 app.use('/auth', authRouter);
-app.use('/game', gameRouter);
 app.use('/player', playerRouter);
 
 app.use((req, res, next) => {

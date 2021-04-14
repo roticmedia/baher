@@ -1,5 +1,4 @@
 const express = require('express');
-const debug = require('debug')('game');
 const { v4 } = require('uuid');
 const _ = require('lodash');
 const { Op } = require('sequelize');
@@ -28,6 +27,9 @@ router.get('/', auth, async (req, res) => {
                     where: {
                         match_id: match.id,
                     },
+                    order: [
+                        ['is_true', 'DESC'],
+                    ],
                     raw: true,
                 }),
                 player: await sql.player.findOne({
@@ -60,7 +62,10 @@ router.get('/free', auth, async (req, res) => {
     try {
         const matches = await sql.match.findAll({
             where: {
-                status: 0,
+                player_id: null,
+                status: {
+                    [Op.not]: 3,
+                },
             },
             raw: true,
         });
@@ -110,16 +115,6 @@ router.post('/', auth, async (req, res) => {
         const questions = [];
         const game_token = v4();
 
-        const match = await sql.match.create({
-            competitors,
-            monasabat,
-            coin_questions,
-            foop_questions,
-            award_title,
-            status: 0,
-            game_token,
-        });
-
         const foops = await sql.question.findAll({
             where: {
                 is_true: 0,
@@ -152,6 +147,16 @@ router.post('/', auth, async (req, res) => {
                 status: false,
             });
         }
+
+        const match = await sql.match.create({
+            competitors,
+            monasabat,
+            coin_questions,
+            foop_questions,
+            award_title,
+            status: 0,
+            game_token,
+        });
 
         for (const coin of coins) {
             await coin.update({
@@ -308,6 +313,65 @@ router.get('/:id', auth, async (req, res) => {
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
+            msg: 'مشکلی بوجود آمده است',
+            status: false,
+        });
+    }
+});
+
+router.delete('/all', auth, async (req, res) => {
+    try {
+        const matches = await sql.match.findAll({
+            where: {
+                status: {
+                    [Op.or]: [2, 1, 0],
+                },
+            },
+        });
+
+        if (matches.length === 0) {
+            return res.json({
+                data: {},
+                msg: 'مسابقه ای وجود ندارد',
+                status: false,
+            });
+        }
+
+        for (const match of matches) {
+            await match.update({
+                status: 3,
+                player_id: null,
+            });
+
+            await sql.player.update({
+                match_id: null,
+            }, {
+                where: {
+                    match_id: match.get('id'),
+                },
+            });
+
+            await sql.question.update({
+                player_id: null,
+                match_id: null,
+                user_answer: null,
+                status: 3,
+            }, {
+                where: {
+                    match_id: match.get('id'),
+                },
+            });
+        }
+        return res.json({
+            data: {},
+            msg: 'مسابقه با موفقیت بسته شد',
+            status: true,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });
@@ -318,6 +382,7 @@ router.delete('/:id', auth, async (req, res) => {
     try {
         if (!req.params.id) {
             return res.json({
+                data: {},
                 msg: 'اطلاعات ناقص است',
                 status: false,
             });
@@ -331,6 +396,7 @@ router.delete('/:id', auth, async (req, res) => {
 
         if (match.get('status') === 3) {
             return res.json({
+                data: {},
                 msg: 'این مسابقه به پایان رسیده است',
                 status: false,
             });
@@ -361,12 +427,14 @@ router.delete('/:id', auth, async (req, res) => {
         });
 
         return res.json({
+            data: {},
             msg: 'مسابقه با موفقیت بسته شد',
             status: true,
         });
     } catch (err) {
         console.log(err);
         return res.json({
+            data: {},
             msg: 'مشکلی بوجود آمده است',
             status: false,
         });

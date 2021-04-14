@@ -97,7 +97,7 @@ router.post('/', auth, (async (req, res) => {
 
         return res.json({
             data: {},
-            msg: 'مشکلی در اضافه کردن سوال بوچود آمده است',
+            msg: 'مشکلی در اضافه کردن سوال بوجود آمده است',
             status: false,
         });
     }
@@ -132,7 +132,6 @@ router.put('/', auth, (async (req, res) => {
         if (req.body.title) question.title = req.body.title;
         if (req.body.hardness) question.hardness = req.body.hardness;
         if (req.body.is_true) question.is_true = req.body.is_true;
-        if (req.body.user_answer) question.user_answer = req.body.user_answer;
         if (req.body.question_answer) question.question_answer = req.body.question_answer;
         if (req.body.score) question.score = req.body.score;
 
@@ -140,6 +139,8 @@ router.put('/', auth, (async (req, res) => {
         if (req.body.option_2) question.option_2 = req.body.option_2;
         if (req.body.option_3) question.option_3 = req.body.option_3;
         if (req.body.option_4) question.option_4 = req.body.option_4;
+
+        if (req.body.user_answer) question.user_answer = req.body.user_answer;
 
         await question.save();
 
