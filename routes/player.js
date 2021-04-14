@@ -42,19 +42,13 @@ router.post('/', auth, async (req, res) => {
         const {
             name, username, email, phone, country, password,
         } = req.body;
+        let file = null;
+        if (req.file && req.file.path) file = req.file && req.file.path;
 
-        if (!name || !username || !email || !phone || !country || !password || !req.file) {
+        if (!name) {
             return res.json({
                 data: {},
-                msg: 'اطلاعات ناقص است',
-                status: false,
-            });
-        }
-
-        if (!validate.validateFileType(req.file)) {
-            return res.json({
-                data: {},
-                msg: 'فایل باید تصویر باشد',
+                msg: 'نام لازم است',
                 status: false,
             });
         }
@@ -66,7 +60,7 @@ router.post('/', auth, async (req, res) => {
             phone,
             country,
             password,
-            picture: req.file.path,
+            picture: file,
         });
         return res.json({
             data: {},
