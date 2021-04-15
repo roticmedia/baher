@@ -6,10 +6,28 @@ const sql = require('../models');
 
 const auth = require('../middlewares/auth');
 
-const validate = require('../utils/validate');
-const validatePlayer = require('../validate/Player');
-
 const router = express.Router();
+
+router.get('/all', auth, async (req, res) => {
+    try {
+        const players = await sql.player.findAll({ raw: true }) || [];
+
+        return res.json({
+            data: {
+                players,
+            },
+            msg: '',
+            status: true,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
+            msg: 'مشکلی بوجود آمده است',
+            status: false,
+        });
+    }
+});
 
 router.get('/available', auth, async (req, res) => {
     try {
@@ -89,6 +107,7 @@ router.put('/', auth, async (req, res) => {
         const {
             name, email, phone, country, password, id,
         } = req.body;
+        let file = null;
 
         if (!id) {
             return res.json({
@@ -98,13 +117,7 @@ router.put('/', auth, async (req, res) => {
             });
         }
 
-        if (req.file && !validate.validateFileType(req.file)) {
-            return res.json({
-                data: {},
-                msg: 'فایل باید تصویر باشد',
-                status: false,
-            });
-        }
+        if (req.file && req.file.path) file = req.file && req.file.path;
 
         const player = await sql.player.findOne({
             where: {
@@ -125,7 +138,7 @@ router.put('/', auth, async (req, res) => {
         if (phone) player.email = phone;
         if (country) player.country = country;
         if (password) player.password = password;
-        if (req.file) player.picture = req.file.path;
+        if (file) player.picture = file;
 
         await player.save();
 
@@ -151,9 +164,9 @@ router.put('/', auth, async (req, res) => {
     }
 });
 
-router.delete('/', auth, async (req, res) => {
+router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         if (!id) {
             return res.json({
                 data: {},

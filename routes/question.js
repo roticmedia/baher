@@ -7,6 +7,25 @@ const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
+router.get('/all', auth, async (req, res) => {
+    try {
+        const questions = await sql.question.findAll({ raw: true }) || [];
+        return res.json({
+            data: {
+                questions,
+            },
+            msg: '',
+            status: true,
+        });
+    } catch (err) {
+        return res.json({
+            data: {},
+            msg: 'مشکلی در پیدا کردن سوال بوجود آمده است',
+            status: false,
+        });
+    }
+});
+
 router.get('/:id', auth, async (req, res) => {
     try {
         if (req.params.id) {
@@ -165,9 +184,9 @@ router.put('/', auth, (async (req, res) => {
     }
 }));
 
-router.delete('/', auth, async (req, res) => {
+router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        if (!req.body.id) {
+        if (!req.params.id) {
             return res.json({
                 data: {},
                 msg: 'اطلاعات ناقص است',
@@ -176,7 +195,7 @@ router.delete('/', auth, async (req, res) => {
         }
         const question = await sql.question.findOne({
             where: {
-                id: req.body.id,
+                id: req.params.id,
             },
         });
         if (!question) {

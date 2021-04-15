@@ -164,6 +164,7 @@ router.post('/', auth, async (req, res) => {
                 match_id: match.get('id'),
                 player_id: null,
                 user_answer: null,
+                used_times: sql.Sequelize.literal('used_times + 1'),
             });
             questions.push(coin.toJSON());
         }
@@ -173,6 +174,7 @@ router.post('/', auth, async (req, res) => {
                 match_id: match.get('id'),
                 player_id: null,
                 user_answer: null,
+                used_times: sql.Sequelize.literal('used_times + 1'),
             });
             questions.push(foop.toJSON());
         }
@@ -200,7 +202,7 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-router.post('/:player_id/:match_id', auth, async (req, res) => {
+router.post('/connect/:player_id/:match_id', auth, async (req, res) => {
     try {
         const match = await sql.match.findOne({
             where: {
@@ -344,13 +346,29 @@ router.delete('/all', auth, async (req, res) => {
                 player_id: null,
             });
 
-            await sql.player.update({
-                match_id: null,
-            }, {
+            const player = await sql.player.findOne({
                 where: {
                     match_id: match.get('id'),
                 },
             });
+
+            await player.update({
+                match_id: null,
+            });
+
+            const questions = await sql.question.findAll({
+                where: {
+                    match_id: match.get('id'),
+                },
+            });
+
+            const winner = questions.every((question) => question.get('user_answer') === question.get('question_answer'));
+
+            if (winner) {
+                await player.update({
+                    matches_win: sql.Sequelize.literal('matches_win + 1'),
+                });
+            }
 
             await sql.question.update({
                 player_id: null,
@@ -407,13 +425,29 @@ router.delete('/:id', auth, async (req, res) => {
             player_id: null,
         });
 
-        await sql.player.update({
-            match_id: null,
-        }, {
+        const player = await sql.player.findOne({
             where: {
                 match_id: match.get('id'),
             },
         });
+
+        await player.update({
+            match_id: null,
+        });
+
+        const questions = await sql.question.findAll({
+            where: {
+                match_id: match.get('id'),
+            },
+        });
+
+        const winner = questions.every((question) => question.get('user_answer') === question.get('question_answer'));
+
+        if (winner) {
+            await player.update({
+                matches_win: sql.Sequelize.literal('matches_win + 1'),
+            });
+        }
 
         await sql.question.update({
             player_id: null,
