@@ -55,21 +55,47 @@ router.get('/available', auth, async (req, res) => {
     }
 });
 
-router.post('/', auth, async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
     try {
-        const {
-            name, username, email, phone, country, password,
-        } = req.body;
-        let file = null;
-        if (req.file && req.file.path) file = req.file && req.file.path;
+        const player = await sql.player.findOne({
+            where: {
+                id: req.params.id,
+            },
+            raw: true,
+        });
 
-        if (!name) {
+        if (!player) {
             return res.json({
                 data: {},
-                msg: 'نام لازم است',
+                msg: 'بازیکنی با این مشخصات وجود ندارد',
                 status: false,
             });
         }
+
+        return res.json({
+            data: {
+                player,
+            },
+            msg: 'پیدا شد',
+            status: false,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
+            msg: 'مشکلی بوجود آمده است',
+            status: false,
+        });
+    }
+});
+
+router.post('/', auth, async (req, res) => {
+    try {
+        const {
+            name = null, username = null, email = null, phone = null, country = null, password = null,
+        } = req.body;
+        let file = null;
+        if (req.file && req.file.path) file = req.file && req.file.path;
 
         await sql.player.create({
             name,
@@ -88,7 +114,7 @@ router.post('/', auth, async (req, res) => {
     } catch (e) {
         if (e instanceof ValidationError) {
             return res.json({
-                msg: e.errors.map((error) => error.message),
+                msg: e.errors[0].message,
                 data: {},
                 status: false,
             });
@@ -140,6 +166,12 @@ router.put('/', auth, async (req, res) => {
         if (password) player.password = password;
         if (file) player.picture = file;
 
+        if (name === '') player.name = null;
+        if (email === '') player.email = null;
+        if (phone === '') player.email = null;
+        if (country === '') player.country = null;
+        if (password === '') player.password = null;
+
         await player.save();
 
         return res.json({
@@ -150,7 +182,7 @@ router.put('/', auth, async (req, res) => {
     } catch (e) {
         if (e instanceof ValidationError) {
             return res.json({
-                msg: e.errors.map((error) => error.message),
+                msg: e.errors[0].message,
                 data: {},
                 status: false,
             });

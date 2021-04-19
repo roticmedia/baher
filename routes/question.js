@@ -9,6 +9,32 @@ const router = express.Router();
 
 router.get('/all', auth, async (req, res) => {
     try {
+        let { page } = req.query;
+        if (page) {
+            const count = await sql.question.count();
+            const totalPages = Math.round(count / 50);
+            if (page > totalPages) {
+                page = totalPages;
+            }
+            const questions = await sql.question.findAll({
+                order: [
+                    ['id', 'ASC'],
+                ],
+                offset: page * 50,
+                limit: 50,
+                raw: true,
+            });
+
+            return res.json({
+                data: {
+                    questions,
+                    total_pages: totalPages,
+                    page,
+                },
+                msg: 'پیدا شد',
+                status: true,
+            });
+        }
         const questions = await sql.question.findAll({ raw: true }) || [];
         return res.json({
             data: {
@@ -69,7 +95,7 @@ router.get('/:id', auth, async (req, res) => {
 router.post('/', auth, (async (req, res) => {
     try {
         const {
-            title, hardness, question_answer, is_true,
+            title, hardness, question_answer, is_true, status = 0,
         } = req.body;
         if (!title || typeof hardness === 'undefined' || typeof question_answer === 'undefined' || typeof is_true === 'undefined') {
             return res.json({
@@ -89,7 +115,7 @@ router.post('/', auth, (async (req, res) => {
             }
         }
         await sql.question.create({
-            title,
+            title: title.replace(/\s+/g, ' ').trim(),
             hardness,
             is_true,
             question_answer,
@@ -98,6 +124,7 @@ router.post('/', auth, (async (req, res) => {
             option_3: req.body.option_3 ? req.body.option_3 : null,
             option_4: req.body.option_4 ? req.body.option_4 : null,
             score: req.body.score ? req.body.score : 0,
+            status,
         });
 
         return res.json({
@@ -108,7 +135,7 @@ router.post('/', auth, (async (req, res) => {
     } catch (err) {
         if (err instanceof ValidationError) {
             return res.json({
-                msg: err.errors.map((error) => error.message),
+                msg: err.errors[0].message,
                 data: {},
                 status: false,
             });
@@ -134,6 +161,7 @@ router.put('/', auth, (async (req, res) => {
                 status: false,
             });
         }
+
         const question = await sql.question.findOne({
             where: {
                 id: req.body.id,
@@ -148,11 +176,12 @@ router.put('/', auth, (async (req, res) => {
             });
         }
 
-        if (req.body.title) question.title = req.body.title;
+        if (req.body.title) question.title = req.body.title.replace(/\s+/g, ' ').trim();
         if (req.body.hardness) question.hardness = req.body.hardness;
         if (req.body.is_true) question.is_true = req.body.is_true;
         if (req.body.question_answer) question.question_answer = req.body.question_answer;
         if (req.body.score) question.score = req.body.score;
+        if (req.body.status) question.status = req.body.status;
 
         if (req.body.option_1) question.option_1 = req.body.option_1;
         if (req.body.option_2) question.option_2 = req.body.option_2;
@@ -160,6 +189,20 @@ router.put('/', auth, (async (req, res) => {
         if (req.body.option_4) question.option_4 = req.body.option_4;
 
         if (req.body.user_answer) question.user_answer = req.body.user_answer;
+
+        if (req.body.title === '') question.title = null;
+        if (req.body.hardness === '') question.hardness = null;
+        if (req.body.is_true === '') question.is_true = null;
+        if (req.body.question_answer === '') question.question_answer = null;
+        if (req.body.score === '') question.score = null;
+        if (req.body.status === '') question.status = null;
+
+        if (req.body.option_1 === '') question.option_1 = null;
+        if (req.body.option_2 === '') question.option_2 = null;
+        if (req.body.option_3 === '') question.option_3 = null;
+        if (req.body.option_4 === '') question.option_4 = null;
+
+        if (req.body.user_answer === '') question.user_answer = null;
 
         await question.save();
 
@@ -171,8 +214,8 @@ router.put('/', auth, (async (req, res) => {
     } catch (err) {
         if (err instanceof ValidationError) {
             return res.json({
+                msg: err.errors[0].message[0],
                 data: {},
-                msg: err.errors,
                 status: false,
             });
         }

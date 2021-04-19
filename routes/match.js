@@ -164,7 +164,6 @@ router.post('/', auth, async (req, res) => {
                 match_id: match.get('id'),
                 player_id: null,
                 user_answer: null,
-                used_times: sql.Sequelize.literal('used_times + 1'),
             });
             questions.push(coin.toJSON());
         }
@@ -174,7 +173,6 @@ router.post('/', auth, async (req, res) => {
                 match_id: match.get('id'),
                 player_id: null,
                 user_answer: null,
-                used_times: sql.Sequelize.literal('used_times + 1'),
             });
             questions.push(foop.toJSON());
         }
@@ -234,13 +232,16 @@ router.post('/connect/:player_id/:match_id', auth, async (req, res) => {
 
         await match.update({
             player_id: req.params.player_id,
-            status: 1,
+            status: 3,
         });
         await player.update({
             match_id: req.params.match_id,
         });
         await sql.question.update({
             player_id: req.params.player_id,
+            last_used: new Date().toDateString(),
+            status: 3,
+            used_times: sql.Sequelize.literal('used_times + 1'),
         }, {
             where: {
                 match_id: req.params.match_id,

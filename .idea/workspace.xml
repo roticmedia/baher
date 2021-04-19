@@ -20,9 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/multer.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/multer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/question.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/match.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/question.js" afterDir="false" />
@@ -139,7 +141,12 @@
       <workItem from="1618397804366" duration="1010000" />
       <workItem from="1618406137257" duration="586000" />
       <workItem from="1618415682252" duration="5308000" />
-      <workItem from="1618469845398" duration="795000" />
+      <workItem from="1618469845398" duration="2047000" />
+      <workItem from="1618668313986" duration="6232000" />
+      <workItem from="1618688753787" duration="4452000" />
+      <workItem from="1618769775428" duration="531000" />
+      <workItem from="1618807855691" duration="2756000" />
+      <workItem from="1618824434608" duration="2645000" />
     </task>
     <servers />
   </component>
@@ -171,6 +178,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618391939775" />
+    <state x="540" y="255" key="IDE.errors.dialog" timestamp="1618825115674">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="255" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618825115674" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1617385313206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

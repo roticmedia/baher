@@ -4,18 +4,9 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('player', {
     },
     username: {
         type: types.STRING,
-        unique: {
-            args: true,
-            msg: 'این نام کاربری قبلا انتخاب شده است',
-        },
     },
     email: {
         type: types.STRING,
-        validate: {
-            isEmail: {
-                msg: 'ایمیل معتبر نیست',
-            },
-        },
     },
     phone: {
         type: types.STRING,

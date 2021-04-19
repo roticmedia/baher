@@ -14,7 +14,11 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('question', {
         defaultValue: 0,
     },
     title: {
-        type: types.TEXT,
+        type: types.STRING(200),
+        unique: {
+            args: true,
+            msg: 'سوال تکراری است',
+        },
     },
     is_true: {
         type: types.TINYINT,
@@ -37,13 +41,6 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('question', {
     },
     hardness: {
         type: types.TINYINT,
-        validate: {
-            between(value) {
-                if (value < 0 || value > 3) {
-                    throw new Error('مقادیر ورودی برای سختی غیرقابل قبول است');
-                }
-            },
-        },
     },
     used_times: {
         type: types.INTEGER,
@@ -56,13 +53,6 @@ module.exports = (sequelize, Sequelize, types) => sequelize.define('question', {
     question_answer: {
         type: types.TINYINT,
         allowNull: false,
-        validate: {
-            between(value) {
-                if (value < 0 || value > 4) {
-                    throw new Error('مقادیر ورودی برای پاسخ غیرقابل قبول است');
-                }
-            },
-        },
     },
     user_answer: {
         type: types.TINYINT,

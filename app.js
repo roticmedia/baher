@@ -27,7 +27,7 @@ const app = express();
 // sql.sequelize.sync({ force: true });
 
 if (!process.env.TEST) app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({ limit: '10000KB', strict: false }));
 app.use(express.urlencoded({ extended: true }));
 app.use(multer());
 app.use(cookieParser());
