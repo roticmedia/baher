@@ -44,6 +44,7 @@ router.get('/all', auth, async (req, res) => {
             status: true,
         });
     } catch (err) {
+        console.log(err);
         return res.json({
             data: {},
             msg: 'مشکلی در پیدا کردن سوال بوجود آمده است',

@@ -397,6 +397,41 @@ router.delete('/all', auth, async (req, res) => {
     }
 });
 
+router.delete('/used', async (req, res) => {
+    try {
+        const matches = await sql.findAll({
+            where: {
+                status: 0,
+                player_id: null,
+            },
+        });
+
+        for (const match of matches) {
+            await sql.question.update({
+                status: 3,
+                match_id: null,
+            }, {
+                where: {
+                    match_id: match.get('id'),
+                },
+            });
+        }
+
+        return res.json({
+            data: {},
+            msg: 'سوالات بی استفاده ازاد شدند',
+            status: true,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
+            msg: 'مشکلی بوجود آمده است',
+            status: false,
+        });
+    }
+});
+
 router.delete('/:id', auth, async (req, res) => {
     try {
         if (!req.params.id) {
