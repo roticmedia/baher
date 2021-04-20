@@ -399,7 +399,7 @@ router.delete('/all', auth, async (req, res) => {
 
 router.delete('/used', async (req, res) => {
     try {
-        const matches = await sql.findAll({
+        const matches = await sql.match.findAll({
             where: {
                 status: 0,
                 player_id: null,
@@ -416,6 +416,15 @@ router.delete('/used', async (req, res) => {
                 },
             });
         }
+
+        await sql.match.update({
+            status: 3,
+        }, {
+            where: {
+                status: 0,
+                player_id: null,
+            },
+        });
 
         return res.json({
             data: {},
