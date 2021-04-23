@@ -1,98 +1,103 @@
-const express = require('express');
-const { ValidationError } = require('sequelize');
-const { Op } = require('sequelize');
+const express = require("express");
+const { ValidationError } = require("sequelize");
+const { Op } = require("sequelize");
 
-const sql = require('../models');
+const sql = require("../models");
 
-const auth = require('../middlewares/auth');
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.get('/all', auth, async (req, res) => {
+router.get("/all", auth, async (req, res) => {
     try {
-        const players = await sql.player.findAll({ raw: true }) || [];
+        const players = (await sql.player.findAll({ raw: true })) || [];
 
         return res.json({
             data: {
-                players,
+                players
             },
-            msg: '',
-            status: true,
+            msg: "",
+            status: true
         });
     } catch (err) {
         console.log(err);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });
 
-router.get('/available', auth, async (req, res) => {
+router.get("/available", auth, async (req, res) => {
     try {
         const availablePlayer = await sql.player.findAll({
             where: {
-                match_id: null,
+                match_id: null
             },
-            raw: true,
+            raw: true
         });
 
         return res.json({
             data: {
-                available_players: availablePlayer,
+                available_players: availablePlayer
             },
-            msg: '',
-            status: true,
+            msg: "",
+            status: true
         });
     } catch (err) {
         console.log(err);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });
 
-router.get('/:id', auth, async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
     try {
         const player = await sql.player.findOne({
             where: {
-                id: req.params.id,
+                id: req.params.id
             },
-            raw: true,
+            raw: true
         });
 
         if (!player) {
             return res.json({
                 data: {},
-                msg: 'بازیکنی با این مشخصات وجود ندارد',
-                status: false,
+                msg: "بازیکنی با این مشخصات وجود ندارد",
+                status: false
             });
         }
 
         return res.json({
             data: {
-                player,
+                player
             },
-            msg: 'پیدا شد',
-            status: false,
+            msg: "پیدا شد",
+            status: false
         });
     } catch (err) {
         console.log(err);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });
 
-router.post('/', auth, async (req, res) => {
+router.post("/", auth, async (req, res) => {
     try {
         const {
-            name = null, username = null, email = null, phone = null, country = null, password = null,
+            name = null,
+            username = null,
+            email = null,
+            phone = null,
+            country = null,
+            password = null
         } = req.body;
         let file = null;
         if (req.file && req.file.path) file = req.file && req.file.path;
@@ -104,42 +109,40 @@ router.post('/', auth, async (req, res) => {
             phone,
             country,
             password,
-            picture: file,
+            picture: file
         });
         return res.json({
             data: {},
-            msg: 'با موفقیت اضافه شد',
-            status: true,
+            msg: "با موفقیت اضافه شد",
+            status: true
         });
     } catch (e) {
         if (e instanceof ValidationError) {
             return res.json({
                 msg: e.errors[0].message,
                 data: {},
-                status: false,
+                status: false
             });
         }
         console.log(e);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });
 
-router.put('/', auth, async (req, res) => {
+router.put("/", auth, async (req, res) => {
     try {
-        const {
-            name, email, phone, country, password, id,
-        } = req.body;
+        const { name, email, phone, country, password, id } = req.body;
         let file = null;
 
         if (!id) {
             return res.json({
                 data: {},
-                msg: 'اطلاعات ناقص است',
-                status: false,
+                msg: "اطلاعات ناقص است",
+                status: false
             });
         }
 
@@ -147,15 +150,15 @@ router.put('/', auth, async (req, res) => {
 
         const player = await sql.player.findOne({
             where: {
-                id,
-            },
+                id
+            }
         });
 
         if (!player) {
             return res.json({
                 data: {},
-                msg: 'بازیکن پیدا نشد',
-                status: false,
+                msg: "بازیکن پیدا نشد",
+                status: false
             });
         }
 
@@ -166,58 +169,58 @@ router.put('/', auth, async (req, res) => {
         if (password) player.password = password;
         if (file) player.picture = file;
 
-        if (name === '') player.name = null;
-        if (email === '') player.email = null;
-        if (phone === '') player.email = null;
-        if (country === '') player.country = null;
-        if (password === '') player.password = null;
+        if (name === "") player.name = null;
+        if (email === "") player.email = null;
+        if (phone === "") player.email = null;
+        if (country === "") player.country = null;
+        if (password === "") player.password = null;
 
         await player.save();
 
         return res.json({
             data: {},
-            msg: 'با موفقیت بروزرسانی شد',
-            status: true,
+            msg: "با موفقیت بروزرسانی شد",
+            status: true
         });
     } catch (e) {
         if (e instanceof ValidationError) {
             return res.json({
                 msg: e.errors[0].message,
                 data: {},
-                status: false,
+                status: false
             });
         }
         console.log(e);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });
 
-router.delete('/delete/:id', auth, async (req, res) => {
+router.delete("/delete/:id", auth, async (req, res) => {
     try {
         const { id } = req.params;
         if (!id) {
             return res.json({
                 data: {},
-                msg: 'اطلاعات ناقص است',
-                status: false,
+                msg: "اطلاعات ناقص است",
+                status: false
             });
         }
 
         const player = await sql.player.findOne({
             where: {
-                id,
-            },
+                id
+            }
         });
 
         if (!player) {
             return res.json({
                 data: {},
-                msg: 'بازیکن پیدا نشد',
-                status: false,
+                msg: "بازیکن پیدا نشد",
+                status: false
             });
         }
 
@@ -225,15 +228,15 @@ router.delete('/delete/:id', auth, async (req, res) => {
 
         return res.json({
             data: {},
-            msg: 'با موفقیت حذف شد',
-            status: true,
+            msg: "با موفقیت حذف شد",
+            status: true
         });
     } catch (err) {
         console.log(err);
         return res.json({
             data: {},
-            msg: 'مشکلی بوجود آمده است',
-            status: false,
+            msg: "مشکلی بوجود آمده است",
+            status: false
         });
     }
 });

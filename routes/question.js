@@ -195,18 +195,20 @@ router.put("/", auth, async (req, res) => {
         }
 
         if (title) question.title = title.replace(/\s+/g, " ").trim();
-        if (hardness) question.hardness = hardness;
-        if (is_true) question.is_true = is_true;
-        if (question_answer) question.question_answer = question_answer;
-        if (score) question.score = score;
-        if (status) question.status = status;
+        if (typeof hardness !== "undefined") question.hardness = hardness;
+        if (typeof is_true !== "undefined") question.is_true = is_true;
+        if (typeof question_answer !== "undefined")
+            question.question_answer = question_answer;
+        if (typeof score !== "undefined") question.score = score;
+        if (typeof status !== "undefined") question.status = status;
 
         if (option_1) question.option_1 = option_1;
         if (option_2) question.option_2 = option_2;
         if (option_3) question.option_3 = option_3;
         if (option_4) question.option_4 = option_4;
 
-        if (user_answer) question.user_answer = user_answer;
+        if (typeof user_answer !== "undefined")
+            question.user_answer = user_answer;
 
         if (title === "") question.title = null;
         if (hardness === "") question.hardness = null;
