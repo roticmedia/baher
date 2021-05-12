@@ -224,6 +224,29 @@ router.delete("/delete/:id", auth, async (req, res) => {
             });
         }
 
+        await sql.match.update(
+            {
+                player_id: null,
+                status: 3
+            },
+            {
+                where: {
+                    player_id: player.get("id")
+                }
+            }
+        );
+
+        await sql.question.update(
+            {
+                player_id: null,
+                match_id: null,
+                status: 3
+            },
+            {
+                player_id: player.get("id")
+            }
+        );
+
         await player.destroy();
 
         return res.json({

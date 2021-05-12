@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/multer.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/multer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/match.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/question.js" afterDir="false" />
@@ -59,10 +55,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="15.4.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.14.36" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.44" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -169,7 +166,25 @@
       <workItem from="1619025920138" duration="1806000" />
       <workItem from="1619036534767" duration="3027000" />
       <workItem from="1619083796103" duration="1491000" />
-      <workItem from="1619162995564" duration="643000" />
+      <workItem from="1619162995564" duration="813000" />
+      <workItem from="1619226461152" duration="585000" />
+      <workItem from="1619252449863" duration="474000" />
+      <workItem from="1619256772173" duration="2241000" />
+      <workItem from="1619273029830" duration="1251000" />
+      <workItem from="1619274467240" duration="400000" />
+      <workItem from="1619298918209" duration="5748000" />
+      <workItem from="1619334177897" duration="595000" />
+      <workItem from="1619341628680" duration="3934000" />
+      <workItem from="1619511432685" duration="1575000" />
+      <workItem from="1619520333979" duration="2546000" />
+      <workItem from="1619538976569" duration="1307000" />
+      <workItem from="1619545837323" duration="2421000" />
+      <workItem from="1619557054946" duration="1341000" />
+      <workItem from="1619608578319" duration="146000" />
+      <workItem from="1619608761139" duration="365000" />
+      <workItem from="1620322184107" duration="42000" />
+      <workItem from="1620807751672" duration="1686000" />
+      <workItem from="1620827551653" duration="2904000" />
     </task>
     <servers />
   </component>
@@ -187,39 +202,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="828" y="412" width="657" height="576" key="#ESLint" timestamp="1618998079168">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="828" y="412" width="657" height="576" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1618998079168" />
-    <state x="738" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619001265611">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="738" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619001265611" />
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618391939775">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618391939775" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1618955775165">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1618955775165" />
-    <state x="540" y="255" key="IDE.errors.dialog" timestamp="1618825115674">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="540" y="255" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618825115674" />
-    <state x="273" y="310" key="SettingsEditor" timestamp="1619001138776">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="273" y="310" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619001138776" />
-    <state x="481" y="262" width="604" height="534" key="find.popup" timestamp="1619036845904">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="481" y="262" width="604" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619036845904" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617013755583">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1617013755583" />
   </component>
 </project>

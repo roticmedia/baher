@@ -118,7 +118,7 @@ router.post("/", auth, async (req, res) => {
             });
         }
 
-        await sql.question.create({
+        const question = await sql.question.create({
             title: title.replace(/\s+/g, " ").trim(),
             hardness,
             is_true,
@@ -132,7 +132,7 @@ router.post("/", auth, async (req, res) => {
         });
 
         return res.json({
-            data: {},
+            data: { id: question.get("id") },
             msg: "سوال اضافه شد",
             status: true
         });
@@ -265,6 +265,14 @@ router.delete("/delete/:id", auth, async (req, res) => {
             return res.json({
                 data: {},
                 msg: "سوال پیدا نشد",
+                status: true
+            });
+        }
+
+        if (question.get("status") !== 3) {
+            return res.json({
+                data: {},
+                msg: "سوال در حال استفاده است",
                 status: true
             });
         }
