@@ -269,7 +269,10 @@ router.delete("/delete/:id", auth, async (req, res) => {
             });
         }
 
-        if (question.get("status") !== 3) {
+        if (
+            question.get("player_id") != null ||
+            question.get("match_id") != null
+        ) {
             return res.json({
                 data: {},
                 msg: "سوال در حال استفاده است",
