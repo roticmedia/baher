@@ -1,5 +1,5 @@
 const express = require("express");
-const { ValidationError } = require("sequelize");
+const { ValidationError, Op } = require("sequelize");
 
 const sql = require("../models");
 
@@ -355,6 +355,44 @@ router.delete("/delete/:id", auth, async (req, res) => {
         return res.json({
             data: {},
             msg: "مشکلی در حذف سوال بوجود آمده است",
+            status: false
+        });
+    }
+});
+
+router.get("/search", async (req, res) => {
+    try {
+        const { q } = req.body;
+
+        if (q == undefined) {
+            return res.json({
+                data: {},
+                msg: "اطلاعات ناقص است",
+                status: false
+            });
+        }
+
+        const questions = await sql.question.findAll({
+            where: {
+                title: {
+                    [Op.substring]: q.trim()
+                }
+            },
+            raw: true
+        });
+
+        return res.json({
+            data: {
+                questions
+            },
+            msg: "",
+            status: true
+        });
+    } catch (err) {
+        console.log(err);
+        return res.json({
+            data: {},
+            msg: "مشکلی در جست و جو سوال بوجود آمده است",
             status: false
         });
     }
