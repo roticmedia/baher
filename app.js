@@ -8,6 +8,7 @@ const matchRouter = require("./routes/match");
 const questionRouter = require("./routes/question");
 const authRouter = require("./routes/auth");
 const playerRouter = require("./routes/player");
+const categoryRouter = require("./routes/category");
 
 const sql = require("./models");
 const multer = require("./config/multer");
@@ -37,6 +38,7 @@ app.use("/match", matchRouter);
 app.use("/question", questionRouter);
 app.use("/auth", authRouter);
 app.use("/player", playerRouter);
+app.use("/category", categoryRouter);
 
 app.use((req, res, next) => {
     res.status(404);

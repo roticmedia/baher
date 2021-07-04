@@ -30,5 +30,6 @@ sql.types = DataTypes;
 sql.question = require("./question")(sequelize, Sequelize, DataTypes);
 sql.match = require("./match")(sequelize, Sequelize, DataTypes);
 sql.player = require("./player")(sequelize, Sequelize, DataTypes);
+sql.category = require("./category")(sequelize, Sequelize, DataTypes);
 
 module.exports = sql;

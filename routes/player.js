@@ -199,21 +199,20 @@ router.put("/", auth, async (req, res) => {
     }
 });
 
-router.put('/swap', async (req, res) => {
+router.put("/swap", async (req, res) => {
     try {
         const { player_1_id, player_2_id } = req.body;
-
 
         const player_1 = await sql.player.findOne({
             where: {
                 id: player_1_id
             }
-        })
+        });
         const player_2 = await sql.player.findOne({
             where: {
                 id: player_2_id
             }
-        })
+        });
 
         if (!player_1 || !player_2) {
             return res.json({
@@ -223,8 +222,8 @@ router.put('/swap', async (req, res) => {
             });
         }
 
-        const temp_player_1 = player_1.get({ plain: true })
-        const temp_player_2 = player_2.get({ plain: true })
+        const temp_player_1 = player_1.get({ plain: true });
+        const temp_player_2 = player_2.get({ plain: true });
 
         await player_2.destroy();
         await player_1.destroy();
@@ -240,9 +239,9 @@ router.put('/swap', async (req, res) => {
 
         return res.json({
             data: {},
-            msg: 'جابجا شد',
+            msg: "جابجا شد",
             status: true
-        })
+        });
     } catch (err) {
         console.log(e);
         return res.json({
@@ -251,7 +250,7 @@ router.put('/swap', async (req, res) => {
             status: false
         });
     }
-})
+});
 
 router.delete("/delete/:id", auth, async (req, res) => {
     try {

@@ -51,43 +51,6 @@ router.get("/all", auth, async (req, res) => {
     }
 });
 
-router.get("/:id", auth, async (req, res) => {
-    try {
-        if (req.params.id) {
-            const question = await sql.question.findOne({
-                where: {
-                    id: req.params.id
-                }
-            });
-            if (question) {
-                return res.json({
-                    msg: "",
-                    data: {
-                        question: question.toJSON()
-                    },
-                    status: true
-                });
-            }
-            return res.json({
-                data: {},
-                msg: "سوال پیدا نشد",
-                status: false
-            });
-        }
-        return res.json({
-            data: {},
-            msg: "اطلاعات ناقص است",
-            status: false
-        });
-    } catch (err) {
-        return res.json({
-            data: {},
-            msg: "مشکلی در پیدا کردن سوال بوجود آمده است",
-            status: false
-        });
-    }
-});
-
 /*
   should add question
 */
@@ -148,6 +111,107 @@ router.post("/", auth, async (req, res) => {
         return res.json({
             data: {},
             msg: "مشکلی در اضافه کردن سوال بوجود آمده است",
+            status: false
+        });
+    }
+});
+
+router.get("/category", async (req, res) => {
+    try {
+        const { category_id } = req.body;
+
+        if (category_id == undefined) {
+            return res.json({
+                data: {},
+                msg: "اطلاعات ناقص است",
+                status: false
+            });
+        }
+
+        const questions =
+            (await sql.question.findAll({
+                where: {
+                    category_id
+                },
+                raw: true
+            })) || [];
+        return res.json({
+            data: {
+                questions
+            },
+            msg: "",
+            status: true
+        });
+    } catch (err) {
+        console.log(err.stack);
+        return res.json({
+            data: {},
+            msg: "مشکلی در پیدا کردن دسته بندی بوجود آمده است",
+            status: false
+        });
+    }
+});
+
+router.post("/category", async (req, res) => {
+    try {
+        const { id, category_id } = req.body;
+
+        if (id == undefined || category_id == undefined) {
+            return res.json({
+                data: {},
+                msg: "اطلاعات ناقص است",
+                status: false
+            });
+        }
+
+        const question = await sql.question.findOne({
+            where: id
+        });
+
+        if (!question) {
+            return res.json({
+                data: {},
+                msg: "چنین سوالی وجود ندارد",
+                status: false
+            });
+        }
+
+        const category = await sql.category.findOne({
+            where: {
+                id: category_id
+            }
+        });
+
+        if (!category) {
+            return res.json({
+                data: {},
+                msg: "چنین دسته بندی وجود ندارد",
+                status: false
+            });
+        }
+
+        await question.update(
+            {
+                category_id: category.get("id"),
+                category_name: category.get("name")
+            },
+            {
+                where: {
+                    id
+                }
+            }
+        );
+
+        return res.json({
+            data: {},
+            msg: "دسته بندی با موفقیت اضافه یا بروزرسانی شد",
+            status: true
+        });
+    } catch (err) {
+        console.log(err.stack);
+        return res.json({
+            data: {},
+            msg: "مشکلی در اضافه کردن دسته بندی به سوال بوجود آمده است",
             status: false
         });
     }
@@ -291,6 +355,43 @@ router.delete("/delete/:id", auth, async (req, res) => {
         return res.json({
             data: {},
             msg: "مشکلی در حذف سوال بوجود آمده است",
+            status: false
+        });
+    }
+});
+
+router.get("/:id", auth, async (req, res) => {
+    try {
+        if (req.params.id) {
+            const question = await sql.question.findOne({
+                where: {
+                    id: req.params.id
+                }
+            });
+            if (question) {
+                return res.json({
+                    msg: "",
+                    data: {
+                        question: question.toJSON()
+                    },
+                    status: true
+                });
+            }
+            return res.json({
+                data: {},
+                msg: "سوال پیدا نشد",
+                status: false
+            });
+        }
+        return res.json({
+            data: {},
+            msg: "اطلاعات ناقص است",
+            status: false
+        });
+    } catch (err) {
+        return res.json({
+            data: {},
+            msg: "مشکلی در پیدا کردن سوال بوجود آمده است",
             status: false
         });
     }
