@@ -360,7 +360,7 @@ router.delete("/delete/:id", auth, async (req, res) => {
     }
 });
 
-router.get("/search", async (req, res) => {
+router.post("/search", async (req, res) => {
     try {
         const { q } = req.body;
 
