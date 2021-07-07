@@ -56,6 +56,7 @@ router.get("/all", auth, async (req, res) => {
 */
 router.post("/", auth, async (req, res) => {
     try {
+        let category = null;
         const {
             title,
             hardness,
@@ -66,7 +67,8 @@ router.post("/", auth, async (req, res) => {
             option_1 = null,
             option_2 = null,
             option_3 = null,
-            option_4 = null
+            option_4 = null,
+            category_id = null
         } = req.body;
         if (
             !title ||
@@ -81,6 +83,15 @@ router.post("/", auth, async (req, res) => {
             });
         }
 
+        if (category_id != null) {
+            category = await sql.category.findOne({
+                where: {
+                    id: category_id
+                },
+                raw: true
+            });
+        }
+
         const question = await sql.question.create({
             title: title.replace(/\s+/g, " ").trim(),
             hardness,
@@ -91,11 +102,13 @@ router.post("/", auth, async (req, res) => {
             option_3,
             option_4,
             score,
-            status
+            status,
+            category_id: category && category.id ? category.id : null,
+            category_name: category && category.name ? category.name : null
         });
 
         return res.json({
-            data: { id: question.get("id") },
+            data: { question: question.get({ plain: true }) },
             msg: "سوال اضافه شد",
             status: true
         });
@@ -241,7 +254,8 @@ router.put("/", auth, async (req, res) => {
             option_2,
             option_3,
             option_4,
-            user_answer
+            user_answer,
+            category_id
         } = req.body;
 
         const question = await sql.question.findOne({
@@ -256,6 +270,19 @@ router.put("/", auth, async (req, res) => {
                 msg: "سوال پیدا نشد",
                 status: false
             });
+        }
+
+        if (category_id != null) {
+            const category = await sql.category.findOne({
+                where: {
+                    id: category_id
+                },
+                raw: true
+            });
+            if (category) {
+                question.category_id = category.id;
+                question.category_name = category.name;
+            }
         }
 
         if (title) question.title = title.replace(/\s+/g, " ").trim();
