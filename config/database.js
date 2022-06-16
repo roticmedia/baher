@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 module.exports = {
-    HOST: 'localhost',
-    USER: 'root',
-    PASSWORD: '',
-    DATABASE: 'quiz',
-    dialect: 'mysql',
+    HOST: "localhost",
+    USER: "root",
+    PASSWORD: "",
+    DATABASE: "baher",
+    dialect: "mysql"
 };

@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="">
+    <list default="true" id="598ba64b-079b-4ac0-9e49-e4e9b7297213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quiz.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jsonWebToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/jsonWebToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/multer.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/multer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mongo/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/mongo/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validate/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/validate/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,185 +40,58 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBowerSettings">
-    <node-interpreter value="project" />
-    <bower-package value="" />
-    <bower.json value="" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
+  <component name="ProjectId" id="27kOr80rCzrRvUgEI1AfwZleuWJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/package.json" />
-  </component>
-  <component name="ProjectId" id="1qIh7gMmY4akWMDo8oAvx5Imq9G" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/www" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="E:\projects\quiz\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\projects\quiz\utils" />
-    </key>
+  <component name="RunManager">
+    <configuration name="www" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ad394f64-7cd4-4257-89f6-a2a720544ab2" name="Default Changelist" comment="" />
-      <created>1616772845941</created>
+      <changelist id="598ba64b-079b-4ac0-9e49-e4e9b7297213" name="Changes" comment="" />
+      <created>1649860883386</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1616772845941</updated>
-      <workItem from="1616772847044" duration="2622000" />
-      <workItem from="1616816712462" duration="4984000" />
-      <workItem from="1616849561799" duration="1476000" />
-      <workItem from="1616861461458" duration="7031000" />
-      <workItem from="1616911420402" duration="903000" />
-      <workItem from="1616923678812" duration="155000" />
-      <workItem from="1616925548656" duration="6507000" />
-      <workItem from="1616989426012" duration="2594000" />
-      <workItem from="1617010207647" duration="5858000" />
-      <workItem from="1617093620755" duration="2303000" />
-      <workItem from="1617113719144" duration="591000" />
-      <workItem from="1617136673886" duration="4424000" />
-      <workItem from="1617164845219" duration="7681000" />
-      <workItem from="1617184285801" duration="594000" />
-      <workItem from="1617203155551" duration="7544000" />
-      <workItem from="1617258170378" duration="6970000" />
-      <workItem from="1617341022285" duration="4371000" />
-      <workItem from="1617360829269" duration="597000" />
-      <workItem from="1617379904112" duration="4858000" />
-      <workItem from="1617421691814" duration="8878000" />
-      <workItem from="1617442599765" duration="11297000" />
-      <workItem from="1617473055344" duration="2767000" />
-      <workItem from="1617511919557" duration="1861000" />
-      <workItem from="1617531329217" duration="2441000" />
-      <workItem from="1617556041171" duration="1021000" />
-      <workItem from="1617594556167" duration="2198000" />
-      <workItem from="1617614452270" duration="2110000" />
-      <workItem from="1617631290987" duration="266000" />
-      <workItem from="1617631583349" duration="5650000" />
-      <workItem from="1617685302174" duration="8491000" />
-      <workItem from="1617703799573" duration="3283000" />
-      <workItem from="1617738689469" duration="3443000" />
-      <workItem from="1617772967650" duration="594000" />
-      <workItem from="1617783440760" duration="1188000" />
-      <workItem from="1617786950002" duration="1077000" />
-      <workItem from="1617810343096" duration="1329000" />
-      <workItem from="1617817605314" duration="6534000" />
-      <workItem from="1617861576454" duration="5168000" />
-      <workItem from="1617880982041" duration="72000" />
-      <workItem from="1617892882530" duration="1438000" />
-      <workItem from="1617973269613" duration="2171000" />
-      <workItem from="1617986074533" duration="3217000" />
-      <workItem from="1618038220225" duration="2046000" />
-      <workItem from="1618049374067" duration="1189000" />
-      <workItem from="1618062503250" duration="261000" />
-      <workItem from="1618083267355" duration="3246000" />
-      <workItem from="1618120566370" duration="371000" />
-      <workItem from="1618139376929" duration="99000" />
-      <workItem from="1618163398609" duration="3073000" />
-      <workItem from="1618171303398" duration="111000" />
-      <workItem from="1618217946683" duration="5170000" />
-      <workItem from="1618236556379" duration="73000" />
-      <workItem from="1618242766318" duration="1095000" />
-      <workItem from="1618290288360" duration="6642000" />
-      <workItem from="1618297963693" duration="1032000" />
-      <workItem from="1618306703004" duration="3486000" />
-      <workItem from="1618388324208" duration="2544000" />
-      <workItem from="1618391868803" duration="718000" />
-      <workItem from="1618397804366" duration="1010000" />
-      <workItem from="1618406137257" duration="586000" />
-      <workItem from="1618415682252" duration="5308000" />
-      <workItem from="1618469845398" duration="2047000" />
-      <workItem from="1618668313986" duration="6232000" />
-      <workItem from="1618688753787" duration="4452000" />
-      <workItem from="1618769775428" duration="531000" />
-      <workItem from="1618807855691" duration="2756000" />
-      <workItem from="1618824434608" duration="2674000" />
-      <workItem from="1618830652777" duration="10000" />
-      <workItem from="1618913145393" duration="2011000" />
-      <workItem from="1618915345612" duration="159000" />
-      <workItem from="1618940804669" duration="6849000" />
-      <workItem from="1618996513747" duration="832000" />
-      <workItem from="1618997369938" duration="233000" />
-      <workItem from="1618997619088" duration="661000" />
-      <workItem from="1618998298480" duration="62000" />
-      <workItem from="1618999966645" duration="2898000" />
-      <workItem from="1619016048424" duration="1838000" />
-      <workItem from="1619021164211" duration="594000" />
-      <workItem from="1619025920138" duration="1806000" />
-      <workItem from="1619036534767" duration="3027000" />
-      <workItem from="1619083796103" duration="1491000" />
-      <workItem from="1619162995564" duration="813000" />
-      <workItem from="1619226461152" duration="585000" />
-      <workItem from="1619252449863" duration="474000" />
-      <workItem from="1619256772173" duration="2241000" />
-      <workItem from="1619273029830" duration="1251000" />
-      <workItem from="1619274467240" duration="400000" />
-      <workItem from="1619298918209" duration="5748000" />
-      <workItem from="1619334177897" duration="595000" />
-      <workItem from="1619341628680" duration="3934000" />
-      <workItem from="1619511432685" duration="1575000" />
-      <workItem from="1619520333979" duration="2546000" />
-      <workItem from="1619538976569" duration="1307000" />
-      <workItem from="1619545837323" duration="2421000" />
-      <workItem from="1619557054946" duration="1341000" />
-      <workItem from="1619608578319" duration="146000" />
-      <workItem from="1619608761139" duration="365000" />
-      <workItem from="1620322184107" duration="42000" />
-      <workItem from="1620807751672" duration="1686000" />
-      <workItem from="1620827551653" duration="2904000" />
-      <workItem from="1621624490797" duration="1033000" />
-      <workItem from="1625415252249" duration="9085000" />
-      <workItem from="1625428728293" duration="33000" />
-      <workItem from="1625433302631" duration="913000" />
-      <workItem from="1625468184903" duration="205000" />
-      <workItem from="1625551661316" duration="1222000" />
-      <workItem from="1625553516011" duration="33000" />
-      <workItem from="1625644994922" duration="828000" />
-      <workItem from="1625648614268" duration="7000" />
-      <workItem from="1625681023195" duration="112000" />
+      <updated>1649860883386</updated>
+      <workItem from="1649860885658" duration="2869000" />
+      <workItem from="1649887940933" duration="3500000" />
+      <workItem from="1649892090306" duration="111000" />
+      <workItem from="1650044897856" duration="970000" />
+      <workItem from="1650141140044" duration="399000" />
+      <workItem from="1651083533209" duration="444000" />
+      <workItem from="1651134424444" duration="596000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

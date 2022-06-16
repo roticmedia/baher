@@ -1,11 +1,11 @@
-const Socket = require('socket.io');
+const Socket = require("socket.io");
 
 module.exports = (server) => {
     const io = Socket(server, {
-        cors: '*',
+        cors: "*"
     });
 
-    io.on('connection', (socket) => {
-        console.log('hello');
+    io.on("connection", (socket) => {
+        console.log("hello");
     });
 };

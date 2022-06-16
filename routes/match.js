@@ -26,7 +26,7 @@ router.get("/", auth, async (req, res) => {
                     where: {
                         match_id: match.id
                     },
-                    order: ["is_true", "DESC"],
+                    order: [["is_true", "DESC"]],
                     raw: true
                 }),
                 player: await sql.player.findOne({
@@ -75,7 +75,7 @@ router.get("/free", auth, async (req, res) => {
                     where: {
                         match_id: match.id
                     },
-                    order: ["is_true", "DESC"],
+                    order: [["is_true", "DESC"]],
                     raw: true
                 }),
                 player: await sql.player.findOne({
@@ -444,7 +444,7 @@ router.get("/:id", auth, async (req, res) => {
             where: {
                 match_id: req.params.id
             },
-            order: ["is_true", "DESC"],
+            order: [["is_true", "DESC"]],
             raw: true
         });
 
